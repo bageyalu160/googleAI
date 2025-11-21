@@ -39,12 +39,12 @@ class PriceMonitor extends BaseScraper {
      */
     async searchProduct(product) {
         const keyword = product.keywords[0];
-        logger.info(`🔍 Searching: ${product.name}`);
+        logger.info(`🔍 正在搜索: ${product.name}`);
 
         try {
             const siteConfig = SITES.priceComparison[this.site];
             if (!siteConfig) {
-                throw new Error(`Site ${this.site} not configured`);
+                throw new Error(`站点 ${this.site} 未配置`);
             }
 
             const searchUrl = siteConfig.searchUrl + encodeURIComponent(keyword);
@@ -115,7 +115,7 @@ class PriceMonitor extends BaseScraper {
             });
 
             if (items.length > 0) {
-                logger.success(`✅ ${product.name}: Found ${items.length} items`);
+                logger.success(`✅ ${product.name}: 找到 ${items.length} 个商品`);
 
                 const avgPrice = items.reduce((sum, item) => sum + item.price, 0) / items.length;
                 const minPrice = Math.min(...items.map(i => i.price));
@@ -131,7 +131,7 @@ class PriceMonitor extends BaseScraper {
                     maxPrice
                 };
             } else {
-                logger.warn(`⚠️  ${product.name}: No items found`);
+                logger.warn(`⚠️  ${product.name}: 未找到商品`);
                 return {
                     success: false,
                     product: product.name,
@@ -153,15 +153,15 @@ class PriceMonitor extends BaseScraper {
      * Main scraping logic
      */
     async scrape() {
-        logger.info(`🎯 Category: ${this.category}`);
-        logger.info(`🛒 Site: ${this.site}\n`);
+        logger.info(`🎯 分类: ${this.category}`);
+        logger.info(`🛒 站点: ${this.site}\n`);
 
         // Get products to monitor
         const products = this.category === 'all'
             ? getAllProducts()
             : getProductsByCategory(this.category);
 
-        logger.info(`📦 Monitoring ${products.length} products\n`);
+        logger.info(`📦 正在监控 ${products.length} 个商品\n`);
 
         // Group by category
         const grouped = {};
@@ -197,7 +197,7 @@ class PriceMonitor extends BaseScraper {
         this.summary.successRate = `${successCount}/${totalProducts} (${(successCount / totalProducts * 100).toFixed(1)}%)`;
 
         logger.info(`\n${'='.repeat(60)}`);
-        logger.success(`Success Rate: ${this.summary.successRate}`);
+        logger.success(`成功率: ${this.summary.successRate}`);
         logger.info(`${'='.repeat(60)}\n`);
 
         // Save reports
@@ -225,11 +225,11 @@ if (require.main === module) {
     const monitor = new PriceMonitor(options);
     monitor.run()
         .then(() => {
-            logger.success('✅ Price monitoring completed');
+            logger.success('✅ 价格监控完成');
             process.exit(0);
         })
         .catch(error => {
-            logger.error('❌ Fatal error:', error);
+            logger.error('❌ 致命错误:', error);
             process.exit(1);
         });
 }
