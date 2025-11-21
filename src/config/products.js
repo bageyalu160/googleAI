@@ -15,8 +15,8 @@ const PRODUCTS = {
     baby: [
         {
             name: '爱他美奶粉',
-            keywords: ['爱他美', '奶粉'],
-            priceRange: [100, 500],
+            keywords: ['爱他美'],
+            priceRange: [50, 1000],
             category: 'baby'
         },
         {
