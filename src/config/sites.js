@@ -114,7 +114,7 @@ function getSitesByCategory(category) {
  * @returns {Object|null} Site configuration or null
  */
 function findSiteByName(name) {
-    const all Sites = getAllSites();
+    const allSites = getAllSites();
     return allSites.find(site => site.name === name);
 }
 
