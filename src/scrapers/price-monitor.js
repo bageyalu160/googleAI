@@ -70,7 +70,7 @@ class PriceMonitor extends BaseScraper {
                         if (!hasKeyword) return;
 
                         const titleEl = card.querySelector('h5, .feed-block-title, .z-feed-title');
-                        const title = titleEl ? titleEl.textContent.trim() : '';
+                        const title = titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : '';
 
                         // Extract price with range validation
                         const priceElements = card.querySelectorAll('span, em, strong');

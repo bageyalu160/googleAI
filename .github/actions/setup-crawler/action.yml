@@ -35,7 +35,8 @@ runs:
           libgbm-dev \
           libnss3 \
           libatk-bridge2.0-0 \
-          libgtk-3-0
+          libgtk-3-0 \
+          fonts-noto-cjk
         
         # Install libasound2 (Ubuntu 22.04) or libasound2t64 (Ubuntu 24.04)
         sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
