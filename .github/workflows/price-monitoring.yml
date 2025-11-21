@@ -157,28 +157,25 @@ jobs:
           # 2. 构建消息内容
           CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')
           STATUS_ICON="✅"
+          STATUS_COLOR="info" # 默认绿色/蓝色
           if [ "${{ job.status }}" != "success" ]; then
             STATUS_ICON="❌"
+            STATUS_COLOR="warning" # 红色
           fi
           
-          MSG_CONTENT="价格监控任务完成 $STATUS_ICON
-          -------------------------
-          运行时间: $CURRENT_DATE
-          运行编号: #${{ github.run_number }}
-          运行状态: ${{ job.status }}
-          数据归档: data/$(TZ='Asia/Shanghai' date +'%Y-%m-%d')
-          
-          <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">点击查看详细日志</a>"
-          
-          # 3. 发送消息
+          # 3. 发送消息 (使用 textcard 类型以支持点击跳转)
+          # 注意：description 支持部分 HTML 标签
           curl -s -X POST "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$ACCESS_TOKEN" \
             -H 'Content-Type: application/json' \
             -d "{
               \"touser\": \"${{ secrets.WECOM_USERID }}\",
-              \"msgtype\": \"text\",
+              \"msgtype\": \"textcard\",
               \"agentid\": \"${{ secrets.WECOM_AGENTID }}\",
-              \"text\": {
-                \"content\": \"$MSG_CONTENT\"
+              \"textcard\": {
+                \"title\": \"价格监控任务完成 $STATUS_ICON\",
+                \"description\": \"<div class=\\\"gray\\\">$CURRENT_DATE</div><br><div class=\\\"normal\\\">运行编号: #${{ github.run_number }}</div><div class=\\\"normal\\\">运行状态: ${{ job.status }}</div><div class=\\\"normal\\\">数据归档: data/$(TZ='Asia/Shanghai' date +'%Y-%m-%d')</div>\",
+                \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\",
+                \"btntxt\": \"查看详情\"
               }
             }"
       
