@@ -23,10 +23,12 @@ class BrowserManager {
      * @param {boolean} options.turnstile - Enable Cloudflare Turnstile bypass
      */
     constructor(options = {}) {
+        const proxyUrl = options.proxyUrl || process.env.PROXY_URL;
+
         this.options = {
             headless: options.headless ?? this._detectEnvironment(),
-            args: options.args || this._getDefaultArgs(),
-            proxyUrl: options.proxyUrl || process.env.PROXY_URL,
+            args: options.args || this._getDefaultArgs(proxyUrl),
+            proxyUrl: proxyUrl,
             fingerprint: options.fingerprint ?? true,
             turnstile: options.turnstile ?? true,
             ...options
@@ -48,8 +50,9 @@ class BrowserManager {
     /**
      * Get default browser arguments
      * @private
+     * @param {string} [proxyUrl] - Optional proxy URL
      */
-    _getDefaultArgs() {
+    _getDefaultArgs(proxyUrl) {
         const args = [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -58,8 +61,8 @@ class BrowserManager {
             '--disable-blink-features=AutomationControlled'
         ];
 
-        if (this.options.proxyUrl) {
-            args.push(`--proxy-server=${this.options.proxyUrl}`);
+        if (proxyUrl) {
+            args.push(`--proxy-server=${proxyUrl}`);
         }
 
         return args;
