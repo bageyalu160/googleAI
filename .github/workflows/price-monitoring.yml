@@ -1,11 +1,11 @@
-name: Price Monitoring
+name: 价格监控系统
 
-# Workflow purpose: Monitor product prices from e-commerce and price comparison sites
-# Runs daily and can be triggered manually with custom parameters
+# 工作流用途：监控电商和比价网站的商品价格
+# 每天自动运行，也可以通过自定义参数手动触发
 
 on:
   schedule:
-    # Run at 2 AM UTC daily (10 AM Beijing time)
+    # 每天 UTC 时间凌晨 2 点运行 (北京时间上午 10 点)
     - cron: '0 2 * * *'
   
   push:
@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
     inputs:
       product-category:
-        description: 'Product category to monitor'
+        description: '监控的商品类别'
         required: false
         default: 'all'
         type: choice
@@ -28,7 +28,7 @@ on:
           - household
       
       site:
-        description: 'Price comparison site'
+        description: '比价网站'
         required: false
         default: 'smzdm'
         type: choice
@@ -37,43 +37,43 @@ on:
           - manmanbuy
       
       debug-mode:
-        description: 'Enable debug logging'
+        description: '启用调试日志'
         required: false
         default: false
         type: boolean
 
-# Global environment variables
+# 全局环境变量
 env:
   NODE_VERSION: '18'
   REPORTS_DIR: 'reports/price'
 
-# Ensure only one instance runs at a time
+# 确保同一时间只有一个实例运行
 concurrency:
   group: price-monitoring-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # Job 1: Setup and validation
+  # 任务 1: 环境设置与验证
   setup:
-    name: Setup Environment
+    name: 环境设置
     runs-on: ubuntu-latest
     
     outputs:
       should-run: ${{ steps.check.outputs.should_run }}
     
     steps:
-      - name: Checkout code
+      - name: 检出代码
         uses: actions/checkout@v4
       
-      - name: Check if monitoring should run
+      - name: 检查是否需要运行监控
         id: check
         run: |
-          # Add custom logic to determine if monitoring should run
+          # 添加自定义逻辑来决定是否运行监控
           echo "should_run=true" >> $GITHUB_OUTPUT
   
-  # Job 2: Monitor prices
+  # 任务 2: 监控价格
   monitor-prices:
-    name: Monitor Product Prices
+    name: 监控商品价格
     runs-on: ubuntu-latest
     needs: setup
     if: needs.setup.outputs.should-run == 'true'
@@ -81,20 +81,20 @@ jobs:
     strategy:
       matrix:
         site: [smzdm]
-        # Can be extended: [smzdm, manmanbuy]
+        # 可扩展: [smzdm, manmanbuy]
       fail-fast: false
       max-parallel: 2
     
     steps:
-      - name: Checkout repository
+      - name: 检出仓库
         uses: actions/checkout@v4
       
-      - name: Setup crawler environment
+      - name: 设置爬虫环境
         uses: ./.github/actions/setup-crawler
         with:
           node-version: ${{ env.NODE_VERSION }}
       
-      - name: Run price monitoring
+      - name: 运行价格监控
         env:
           CI: true
           PROXY_URL: ${{ secrets.PROXY_URL }}
@@ -107,7 +107,7 @@ jobs:
             --category=${{ inputs.product-category || 'all' }} \
             --reportsDir=${{ env.REPORTS_DIR }}
       
-      - name: Upload price reports
+      - name: 上传价格报告
         uses: ./.github/actions/upload-reports
         with:
           artifact-name: price-reports-${{ matrix.site }}-${{ github.run_number }}
@@ -117,35 +117,35 @@ jobs:
             ${{ env.REPORTS_DIR }}/*.png
           retention-days: 30
   
-  # Job 3: Generate summary
+  # 任务 3: 生成汇总
   summary:
-    name: Generate Summary Report
+    name: 生成汇总报告
     runs-on: ubuntu-latest
     needs: monitor-prices
     if: always()
     
     steps:
-      - name: Checkout code
+      - name: 检出代码
         uses: actions/checkout@v4
       
-      - name: Download all artifacts
+      - name: 下载所有构建产物
         uses: actions/download-artifact@v4
         with:
           pattern: price-reports-*
           path: reports/aggregated
       
-      - name: Generate summary
+      - name: 生成汇总
         run: |
-          echo "## Price Monitoring Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 价格监控汇总" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Run**: #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**运行编号**: #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**触发方式**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Add more summary logic here
-          echo "✅ Monitoring completed" >> $GITHUB_STEP_SUMMARY
+          # 在此处添加更多汇总逻辑
+          echo "✅ 监控已完成" >> $GITHUB_STEP_SUMMARY
       
-      - name: Upload aggregated report
+      - name: 上传聚合报告
         uses: ./.github/actions/upload-reports
         with:
           artifact-name: price-summary-${{ github.run_number }}
