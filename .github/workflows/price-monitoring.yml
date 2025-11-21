@@ -1,0 +1,152 @@
+name: Price Monitoring
+
+# Workflow purpose: Monitor product prices from e-commerce and price comparison sites
+# Runs daily and can be triggered manually with custom parameters
+
+on:
+  schedule:
+    # Run at 2 AM UTC daily (10 AM Beijing time)
+    - cron: '0 2 * * *'
+  
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '.github/workflows/price-monitoring.yml'
+  
+  workflow_dispatch:
+    inputs:
+      product-category:
+        description: 'Product category to monitor'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - baby
+          - household
+      
+      site:
+        description: 'Price comparison site'
+        required: false
+        default: 'smzdm'
+        type: choice
+        options:
+          - smzdm
+          - manmanbuy
+      
+      debug-mode:
+        description: 'Enable debug logging'
+        required: false
+        default: false
+        type: boolean
+
+# Global environment variables
+env:
+  NODE_VERSION: '18'
+  REPORTS_DIR: 'reports/price'
+
+# Ensure only one instance runs at a time
+concurrency:
+  group: price-monitoring-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Job 1: Setup and validation
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    
+    outputs:
+      should-run: ${{ steps.check.outputs.should_run }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check if monitoring should run
+        id: check
+        run: |
+          # Add custom logic to determine if monitoring should run
+          echo "should_run=true" >> $GITHUB_OUTPUT
+  
+  # Job 2: Monitor prices
+  monitor-prices:
+    name: Monitor Product Prices
+    runs-on: ubuntu-latest
+    needs: setup
+    if: needs.setup.outputs.should-run == 'true'
+    
+    strategy:
+      matrix:
+        site: [smzdm]
+        # Can be extended: [smzdm, manmanbuy]
+      fail-fast: false
+      max-parallel: 2
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup crawler environment
+        uses: ./.github/actions/setup-crawler
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Run price monitoring
+        env:
+          CI: true
+          PROXY_URL: ${{ secrets.PROXY_URL }}
+          DEBUG: ${{ inputs.debug-mode || 'false' }}
+        run: |
+          xvfb-run --auto-servernum \
+            --server-args="-screen 0 1920x1080x24" \
+            node src/scrapers/price-monitor.js \
+            --site=${{ matrix.site }} \
+            --category=${{ inputs.product-category || 'all' }}
+      
+      - name: Upload price reports
+        uses: ./.github/actions/upload-reports
+        with:
+          artifact-name: price-reports-${{ matrix.site }}-${{ github.run_number }}
+          report-path: |
+            ${{ env.REPORTS_DIR }}/*.json
+            ${{ env.REPORTS_DIR }}/*.md
+            ${{ env.REPORTS_DIR }}/*.png
+          retention-days: 30
+  
+  # Job 3: Generate summary
+  summary:
+    name: Generate Summary Report
+    runs-on: ubuntu-latest
+    needs: monitor-prices
+    if: always()
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: price-reports-*
+          path: reports/aggregated
+      
+      - name: Generate summary
+        run: |
+          echo "## Price Monitoring Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run**: #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Add more summary logic here
+          echo "✅ Monitoring completed" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload aggregated report
+        uses: ./.github/actions/upload-reports
+        with:
+          artifact-name: price-summary-${{ github.run_number }}
+          report-path: reports/aggregated/**
+          retention-days: 90

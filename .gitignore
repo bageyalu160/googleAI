@@ -1,0 +1,35 @@
+# Reports and artifacts
+reports/
+*.png
+*.html
+*.json
+!package.json
+!package-lock.json
+
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Archive
+archive/
+
+# Temporary files
+tmp/
+temp/

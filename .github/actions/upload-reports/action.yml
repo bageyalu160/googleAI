@@ -1,0 +1,40 @@
+name: 'Upload Crawler Reports'
+description: 'Upload test reports, screenshots, and JSON data as artifacts'
+author: 'Your Team'
+
+inputs:
+  artifact-name:
+    description: 'Name of the artifact to upload'
+    required: true
+  
+  report-path:
+    description: 'Path pattern for reports to upload'
+    required: false
+    default: |
+      reports/*.json
+      reports/*.md
+      reports/*.png
+      *.png
+      *.json
+      *.md
+  
+  retention-days:
+    description: 'Number of days to retain artifacts'
+    required: false
+    default: '30'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ${{ inputs.report-path }}
+        retention-days: ${{ inputs.retention-days }}
+        if-no-files-found: warn
+
+branding:
+  icon: 'upload'
+  color: 'green'

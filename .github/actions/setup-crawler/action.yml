@@ -1,0 +1,44 @@
+name: 'Setup Crawler Environment'
+description: 'Setup Node.js, install dependencies, and prepare browser environment for web scraping'
+author: 'Your Team'
+
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: false
+    default: '18'
+  
+  cache-dependency-path:
+    description: 'Path to package-lock.json for caching'
+    required: false
+    default: 'package-lock.json'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ${{ inputs.cache-dependency-path }}
+    
+    - name: Install Node.js dependencies
+      shell: bash
+      run: npm ci
+    
+    - name: Install system dependencies for Puppeteer
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          xvfb \
+          libgbm-dev \
+          libnss3 \
+          libatk-bridge2.0-0 \
+          libgtk-3-0 \
+          libasound2
+
+branding:
+  icon: 'download'
+  color: 'blue'
