@@ -213,7 +213,8 @@ if (require.main === module) {
     const args = process.argv.slice(2);
     const options = {
         site: 'smzdm',
-        category: 'all'
+        category: 'all',
+        reportsDir: 'reports/price'
     };
 
     args.forEach(arg => {
