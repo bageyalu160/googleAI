@@ -135,6 +135,53 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
       
+      - name: 推送企业微信通知
+        if: always()
+        continue-on-error: true
+        run: |
+          # 检查 Secrets 是否存在
+          if [ -z "${{ secrets.WECOM_CORPID }}" ]; then
+            echo "未配置 WECOM_CORPID，跳过微信通知"
+            exit 0
+          fi
+          
+          # 1. 获取 Access Token
+          TOKEN_RES=$(curl -s "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${{ secrets.WECOM_CORPID }}&corpsecret=${{ secrets.WECOM_SECRET }}")
+          ACCESS_TOKEN=$(echo $TOKEN_RES | jq -r .access_token)
+          
+          if [ "$ACCESS_TOKEN" == "null" ] || [ -z "$ACCESS_TOKEN" ]; then
+            echo "获取 Access Token 失败: $TOKEN_RES"
+            exit 1
+          fi
+          
+          # 2. 构建消息内容
+          CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')
+          STATUS_ICON="✅"
+          if [ "${{ job.status }}" != "success" ]; then
+            STATUS_ICON="❌"
+          fi
+          
+          MSG_CONTENT="价格监控任务完成 $STATUS_ICON
+          -------------------------
+          运行时间: $CURRENT_DATE
+          运行编号: #${{ github.run_number }}
+          运行状态: ${{ job.status }}
+          数据归档: data/$(TZ='Asia/Shanghai' date +'%Y-%m-%d')
+          
+          <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">点击查看详细日志</a>"
+          
+          # 3. 发送消息
+          curl -s -X POST "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$ACCESS_TOKEN" \
+            -H 'Content-Type: application/json' \
+            -d "{
+              \"touser\": \"${{ secrets.WECOM_USERID }}\",
+              \"msgtype\": \"text\",
+              \"agentid\": \"${{ secrets.WECOM_AGENTID }}\",
+              \"text\": {
+                \"content\": \"$MSG_CONTENT\"
+              }
+            }"
+      
       - name: 下载所有构建产物
         uses: actions/download-artifact@v4
         with:
