@@ -104,7 +104,8 @@ jobs:
             --server-args="-screen 0 1920x1080x24" \
             node src/scrapers/price-monitor.js \
             --site=${{ matrix.site }} \
-            --category=${{ inputs.product-category || 'all' }}
+            --category=${{ inputs.product-category || 'all' }} \
+            --reportsDir=${{ env.REPORTS_DIR }}
       
       - name: Upload price reports
         uses: ./.github/actions/upload-reports
