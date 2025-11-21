@@ -30,14 +30,15 @@ runs:
     - name: Install system dependencies for Puppeteer
       shell: bash
       run: |
-        sudo apt-get update
         sudo apt-get install -y \
           xvfb \
           libgbm-dev \
           libnss3 \
           libatk-bridge2.0-0 \
-          libgtk-3-0 \
-          libasound2
+          libgtk-3-0
+        
+        # Install libasound2 (Ubuntu 22.04) or libasound2t64 (Ubuntu 24.04)
+        sudo apt-get install -y libasound2 || sudo apt-get install -y libasound2t64
 
 branding:
   icon: 'download'
