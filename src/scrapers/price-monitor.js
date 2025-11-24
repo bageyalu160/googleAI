@@ -54,7 +54,8 @@ class PriceMonitor extends BaseScraper {
             const page = this.browser.getPage();
 
             // Extract product information
-            const items = await page.evaluate((config) => {
+            // Extract product information
+            let items = await page.evaluate((config) => {
                 const results = [];
                 const cards = document.querySelectorAll('li.feed-row-wide, .z-feed-card, article');
 
@@ -72,19 +73,45 @@ class PriceMonitor extends BaseScraper {
                         const titleEl = card.querySelector('h5, .feed-block-title, .z-feed-title');
                         const title = titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : '';
 
-                        // Extract price with range validation
-                        const priceElements = card.querySelectorAll('span, em, strong');
+                        // Extract price with specific selectors
                         let currentPrice = null;
 
-                        for (const el of priceElements) {
-                            const text = el.textContent.trim();
-                            const match = text.match(/¥?\s*(\d+(?:\.\d{1,2})?)\s*元?/);
-                            if (match) {
-                                const price = parseFloat(match[1]);
-                                if (price >= config.priceRange[0] && price <= config.priceRange[1]) {
-                                    currentPrice = price;
-                                    break;
+                        // Priority 1: Large price number (e.g. detail page style or prominent card style)
+                        const priceLargeNum = card.querySelector('.price-large .num');
+                        if (priceLargeNum) {
+                            currentPrice = parseFloat(priceLargeNum.textContent.trim());
+                        }
+
+                        // Priority 2: Z-highlight class
+                        if (!currentPrice) {
+                            const highlightPrice = card.querySelector('.z-highlight');
+                            if (highlightPrice) {
+                                const match = highlightPrice.textContent.trim().match(/(\d+(?:\.\d{1,2})?)/);
+                                if (match) currentPrice = parseFloat(match[1]);
+                            }
+                        }
+
+                        // Priority 3: Fallback to generic search if still null
+                        if (!currentPrice) {
+                            const priceElements = card.querySelectorAll('span, em, strong');
+                            for (const el of priceElements) {
+                                const text = el.textContent.trim();
+                                const match = text.match(/¥?\s*(\d+(?:\.\d{1,2})?)\s*元?/);
+                                if (match) {
+                                    const price = parseFloat(match[1]);
+                                    // Basic sanity check: price shouldn't be part of a date or count usually
+                                    if (price > 0) {
+                                        currentPrice = price;
+                                        break;
+                                    }
                                 }
+                            }
+                        }
+
+                        // Validate price range
+                        if (currentPrice !== null) {
+                            if (currentPrice < config.priceRange[0] || currentPrice > config.priceRange[1]) {
+                                currentPrice = null; // Discard if out of range
                             }
                         }
 
@@ -95,7 +122,7 @@ class PriceMonitor extends BaseScraper {
                         const mallText = mallEl ? mallEl.textContent : '';
                         const mall = mallText.match(/(京东|天猫|淘宝|拼多多)/)?.[1] || '';
 
-                        if (title && currentPrice) {
+                        if (title && currentPrice && link) {
                             results.push({
                                 title: title.substring(0, 100),
                                 price: currentPrice,
@@ -113,6 +140,42 @@ class PriceMonitor extends BaseScraper {
                 keywords: product.keywords,
                 priceRange: product.priceRange
             });
+
+            // Scrape detail pages for "How to Buy" guide
+            if (items.length > 0) {
+                logger.info(`🔍 找到 ${items.length} 个商品，正在抓取详情页...`);
+
+                for (const item of items) {
+                    try {
+                        // Navigate to detail page
+                        await page.goto(item.link, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                        await randomDelay(1000, 2000);
+
+                        // Extract "How to Buy" content
+                        const howToBuy = await page.evaluate(() => {
+                            const baoliaoBlocks = document.querySelectorAll('.baoliao-block');
+                            let content = '';
+
+                            baoliaoBlocks.forEach(block => {
+                                // Check for "小编补充" or just take the text
+                                const text = block.innerText.trim();
+                                if (text) {
+                                    content += text + '\n';
+                                }
+                            });
+
+                            return content.trim();
+                        });
+
+                        item.howToBuy = howToBuy || '暂无购买指南';
+                        logger.info(`   📄 已获取 "${item.title.substring(0, 15)}..." 的购买指南`);
+
+                    } catch (error) {
+                        logger.warn(`   ⚠️ 无法获取 "${item.title.substring(0, 15)}..." 的详情: ${error.message}`);
+                        item.howToBuy = '获取失败';
+                    }
+                }
+            }
 
             if (items.length > 0) {
                 logger.success(`✅ ${product.name}: 找到 ${items.length} 个商品`);
