@@ -154,20 +154,37 @@ jobs:
             exit 1
           fi
           
-          # 2. 构建消息内容
+          # 2. 生成详细报告内容
+          REPORT_FILE=$(find temp_reports -name "price-report.json" | head -n 1)
+          DETAILS=""
+          
+          if [ -f "$REPORT_FILE" ]; then
+            # 使用 jq 提取每个商品的最低价，生成简洁列表
+            # 格式: > 商品名: ¥价格
+            DETAILS=$(jq -r '.categories[] | .products[] | select(.success) | "> " + .product + ": ¥" + (.minPrice|tostring)' "$REPORT_FILE" | head -n 10)
+            
+            if [ -z "$DETAILS" ]; then
+              DETAILS="未找到有效价格数据"
+            fi
+          else
+            DETAILS="未找到报告文件"
+          fi
+          
           CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%m-%d %H:%M')
           STATUS_ICON="✅"
           if [ "${{ job.status }}" != "success" ]; then
             STATUS_ICON="❌"
           fi
           
-          # 只要重点：状态、时间和链接
+          # 构建最终消息
           MSG_CONTENT="$STATUS_ICON 监控完成 #${{ github.run_number }}
           时间: $CURRENT_DATE
-          状态: ${{ job.status }}
+          
+          $DETAILS
+          
           链接: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           
-          # 3. 发送消息 (回归 text 类型，精简内容)
+          # 3. 发送消息
           curl -s -X POST "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$ACCESS_TOKEN" \
             -H 'Content-Type: application/json' \
             -d "{
