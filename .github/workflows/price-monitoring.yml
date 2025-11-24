@@ -113,6 +113,12 @@ jobs:
             --category=${{ inputs.product-category || 'all' }} \
             --reportsDir=${{ env.REPORTS_DIR }}
       
+      - name: 调试 - 列出生成的文件
+        if: always()
+        run: |
+          echo "=== Listing reports directory ==="
+          ls -R ${{ env.REPORTS_DIR }} || echo "Reports dir not found"
+      
       - name: 上传价格报告
         uses: ./.github/actions/upload-reports
         with:
@@ -134,6 +140,17 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
+      
+      - name: 下载所有构建产物
+        uses: actions/download-artifact@v4
+        with:
+          pattern: price-reports-*
+          path: temp_reports
+          
+      - name: 调试 - 列出下载的文件
+        run: |
+          echo "=== Listing temp_reports directory ==="
+          ls -R temp_reports || echo "temp_reports not found"
       
       - name: 推送企业微信通知
         if: always()
