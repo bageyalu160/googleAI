@@ -172,10 +172,12 @@ jobs:
           fi
           
           # 2. 生成详细报告内容
-          REPORT_FILE=$(find temp_reports -name "price-report.json" | head -n 1)
+          # 查找报告文件 (递归查找，忽略路径深度)
+          REPORT_FILE=$(find temp_reports -name "price-report.json" -type f | head -n 1)
           DETAILS=""
           
-          if [ -f "$REPORT_FILE" ]; then
+          if [ -n "$REPORT_FILE" ] && [ -f "$REPORT_FILE" ]; then
+            echo "Found report file: $REPORT_FILE"
             # 使用 jq 提取每个商品的最低价，生成简洁列表
             # 格式: > 商品名: ¥价格
             DETAILS=$(jq -r '.categories[] | .products[] | select(.success) | "> " + .product + ": ¥" + (.minPrice|tostring)' "$REPORT_FILE" | head -n 10)
@@ -184,7 +186,8 @@ jobs:
               DETAILS="未找到有效价格数据"
             fi
           else
-            DETAILS="未找到报告文件"
+            echo "Report file not found in temp_reports"
+            DETAILS="未找到报告文件 (路径错误或文件缺失)"
           fi
           
           CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%m-%d %H:%M')
@@ -229,15 +232,15 @@ jobs:
           mkdir -p $TARGET_DIR
           
           # 移动报告文件
-          # 注意：download-artifact 会为每个 artifact 创建子目录，我们需要把它们展平或整理
-          cp -r temp_reports/*/* $TARGET_DIR/ 2>/dev/null || true
+          # 使用 find 查找并复制所有文件，避免目录结构问题
+          find temp_reports -type f -exec cp {} $TARGET_DIR/ \;
           
           # 配置 git
           git config --global user.name 'GitHub Action Price Monitor'
           git config --global user.email 'action@github.com'
           
-          # 添加并提交
-          git add $TARGET_DIR
+          # 添加并提交 (使用 -f 强制添加，因为 .gitignore 忽略了 json/png)
+          git add -f $TARGET_DIR
           
           # 只有在有变化时才提交
           if git diff --staged --quiet; then
