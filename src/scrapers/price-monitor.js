@@ -118,6 +118,11 @@ class PriceMonitor extends BaseScraper {
                         const linkEl = card.querySelector('a[href]');
                         const link = linkEl ? linkEl.href : '';
 
+                        // Filter out article/post pages (usually don't have buying guides)
+                        if (link.includes('post.smzdm.com')) {
+                            return; // Skip article pages
+                        }
+
                         const mallEl = card.querySelector('.feed-block-extras, .z-feed-foot');
                         const mallText = mallEl ? mallEl.textContent : '';
                         const mall = mallText.match(/(京东|天猫|淘宝|拼多多)/)?.[1] || '';
@@ -143,13 +148,51 @@ class PriceMonitor extends BaseScraper {
 
             // Scrape detail pages for "How to Buy" guide
             if (items.length > 0) {
-                logger.info(`🔍 找到 ${items.length} 个商品，正在抓取详情页...`);
+                // 限制详情页抓取数量，避免触发腾讯防水墙
+                const limitedItems = items.slice(0, 2); // 每个商品只抓前2个
+                logger.info(`🔍 找到 ${items.length} 个商品，抓取前 ${limitedItems.length} 个详情页...`);
 
-                for (const item of items) {
+                for (const item of limitedItems) {
                     try {
                         // Navigate to detail page
                         await page.goto(item.link, { waitUntil: 'domcontentloaded', timeout: 30000 });
-                        await randomDelay(1000, 2000);
+
+                        // 模拟真实用户行为：随机滚动和停留
+                        await randomDelay(2000, 3000);
+                        await page.evaluate(() => {
+                            window.scrollTo(0, Math.random() * 300);
+                        });
+
+                        await randomDelay(2000, 4000);
+                        await page.evaluate(() => {
+                            window.scrollTo(0, document.body.scrollHeight * 0.4);
+                        });
+
+                        // 增加延迟：8-15秒 (针对腾讯防水墙)
+                        await randomDelay(8000, 15000);
+
+                        // Check for CAPTCHA/slider
+                        const hasCaptcha = await page.evaluate(() => {
+                            // Check for common CAPTCHA indicators
+                            const captchaKeywords = ['安全验证', '滑块', '拖动', 'captcha', 'slider'];
+                            const bodyText = document.body.innerText;
+                            return captchaKeywords.some(keyword => bodyText.includes(keyword));
+                        });
+
+                        if (hasCaptcha) {
+                            logger.warn(`   ⚠️  检测到验证码，跳过 "${item.title.substring(0, 15)}..."`);
+                            item.howToBuy = '需要人工验证，无法自动获取';
+                            continue;
+                        }
+
+                        // Wait for main content to load
+                        try {
+                            await page.waitForSelector('.baoliao-block, article', { timeout: 5000 });
+                        } catch (e) {
+                            logger.warn(`   ⚠️  内容未加载，跳过 "${item.title.substring(0, 15)}..."`);
+                            item.howToBuy = '页面加载失败';
+                            continue;
+                        }
 
                         // Extract "How to Buy" content
                         const howToBuy = await page.evaluate(() => {
@@ -174,6 +217,11 @@ class PriceMonitor extends BaseScraper {
                         logger.warn(`   ⚠️ 无法获取 "${item.title.substring(0, 15)}..." 的详情: ${error.message}`);
                         item.howToBuy = '获取失败';
                     }
+                }
+
+                // 标记未抓取的商品
+                for (let i = limitedItems.length; i < items.length; i++) {
+                    items[i].howToBuy = '未抓取(限制数量)';
                 }
             }
 
@@ -236,6 +284,7 @@ class PriceMonitor extends BaseScraper {
         });
 
         // Process each category
+        let categoryIndex = 0;
         for (const [category, categoryProducts] of Object.entries(grouped)) {
             logger.info(`${'='.repeat(60)}`);
             logger.info(`${category === 'baby' ? '👶' : '🏠'} ${category.toUpperCase()}`);
@@ -249,6 +298,13 @@ class PriceMonitor extends BaseScraper {
             }
 
             this.summary.categories[category] = { products: results };
+
+            // 类别间休息 60-90 秒 (避免触发防水墙)
+            categoryIndex++;
+            if (categoryIndex < Object.keys(grouped).length) {
+                logger.info(`\n⏸️  类别完成，休息 60-90 秒...\n`);
+                await randomDelay(60000, 90000);
+            }
         }
 
         // Calculate success rate
