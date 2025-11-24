@@ -12,6 +12,7 @@ const { getProductsByCategory, getAllProducts } = require('../config/products');
 const { SITES } = require('../config/sites');
 const { randomDelay } = require('../core/behavior-simulator');
 const { logger } = require('../utils/logger');
+const TencentSliderSolver = require('../utils/tencent-slider-solver');
 
 /**
  * Price Monitor Scraper Class
@@ -31,6 +32,9 @@ class PriceMonitor extends BaseScraper {
             category: this.category,
             categories: {}
         };
+
+        // 初始化滑块解决器
+        this.sliderSolver = new TencentSliderSolver();
     }
 
     /**
@@ -154,38 +158,73 @@ class PriceMonitor extends BaseScraper {
 
                 for (const item of limitedItems) {
                     try {
-                        // Navigate to detail page
-                        await page.goto(item.link, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                        // 1. Navigate to detail page - 独立捕获超时
+                        try {
+                            await page.goto(item.link, {
+                                waitUntil: 'domcontentloaded',
+                                timeout: 30000
+                            });
+                        } catch (gotoError) {
+                            logger.warn(`   ⚠️  页面跳转失败: ${gotoError.message}`);
+                            item.howToBuy = '页面跳转超时';
+                            continue;
+                        }
 
-                        // 模拟真实用户行为：随机滚动和停留
-                        await randomDelay(2000, 3000);
-                        await page.evaluate(() => {
-                            window.scrollTo(0, Math.random() * 300);
-                        });
+                        // 2. 模拟真实用户行为 - 失败不影响主流程
+                        try {
+                            await randomDelay(2000, 3000);
+                            await page.evaluate(() => {
+                                window.scrollTo(0, Math.random() * 300);
+                            });
 
-                        await randomDelay(2000, 4000);
-                        await page.evaluate(() => {
-                            window.scrollTo(0, document.body.scrollHeight * 0.4);
-                        });
+                            await randomDelay(2000, 4000);
+                            await page.evaluate(() => {
+                                window.scrollTo(0, document.body.scrollHeight * 0.4);
+                            });
+                        } catch (scrollError) {
+                            // 滚动失败不影响主流程，仅记录
+                            logger.debug(`   页面交互失败: ${scrollError.message}`);
+                        }
 
                         // 增加延迟：8-15秒 (针对腾讯防水墙)
                         await randomDelay(8000, 15000);
 
-                        // Check for CAPTCHA/slider
-                        const hasCaptcha = await page.evaluate(() => {
-                            // Check for common CAPTCHA indicators
-                            const captchaKeywords = ['安全验证', '滑块', '拖动', 'captcha', 'slider'];
-                            const bodyText = document.body.innerText;
-                            return captchaKeywords.some(keyword => bodyText.includes(keyword));
-                        });
-
-                        if (hasCaptcha) {
-                            logger.warn(`   ⚠️  检测到验证码，跳过 "${item.title.substring(0, 15)}..."`);
-                            item.howToBuy = '需要人工验证，无法自动获取';
-                            continue;
+                        // 3. Check for CAPTCHA/slider - 独立捕获
+                        let hasCaptcha = false;
+                        try {
+                            hasCaptcha = await page.evaluate(() => {
+                                const captchaKeywords = ['安全验证', '滑块', '拖动', 'captcha', 'slider'];
+                                const bodyText = document.body?.innerText || '';
+                                return captchaKeywords.some(keyword => bodyText.includes(keyword));
+                            });
+                        } catch (detectError) {
+                            logger.debug(`   验证码检测失败: ${detectError.message}`);
+                            // 检测失败假设无验证码，继续流程
                         }
 
-                        // Wait for main content to load
+                        // 4. 处理验证码 - 捕获解决器内部异常
+                        if (hasCaptcha) {
+                            logger.warn(`   ⚠️  检测到验证码，尝试自动解决...`);
+
+                            try {
+                                const solved = await this.sliderSolver.solve(page);
+
+                                if (!solved) {
+                                    logger.warn(`   ❌ 自动解决失败，跳过 "${item.title.substring(0, 15)}..."`);
+                                    item.howToBuy = '需要人工验证，自动解决失败';
+                                    continue;
+                                }
+
+                                logger.info(`   ✅ 滑块已自动解决，继续抓取...`);
+                                await randomDelay(2000, 3000);
+                            } catch (solverError) {
+                                logger.error(`   ❌ 滑块解决器异常: ${solverError.message}`);
+                                item.howToBuy = '滑块解决器错误';
+                                continue;
+                            }
+                        }
+
+                        // 5. Wait for main content to load
                         try {
                             await page.waitForSelector('.baoliao-block, article', { timeout: 5000 });
                         } catch (e) {
@@ -194,27 +233,33 @@ class PriceMonitor extends BaseScraper {
                             continue;
                         }
 
-                        // Extract "How to Buy" content
-                        const howToBuy = await page.evaluate(() => {
-                            const baoliaoBlocks = document.querySelectorAll('.baoliao-block');
-                            let content = '';
+                        // 6. Extract "How to Buy" content - 独立捕获
+                        let howToBuy = '';
+                        try {
+                            howToBuy = await page.evaluate(() => {
+                                const baoliaoBlocks = document.querySelectorAll('.baoliao-block');
+                                let content = '';
 
-                            baoliaoBlocks.forEach(block => {
-                                // Check for "小编补充" or just take the text
-                                const text = block.innerText.trim();
-                                if (text) {
-                                    content += text + '\n';
-                                }
+                                baoliaoBlocks.forEach(block => {
+                                    const text = block.innerText?.trim() || '';
+                                    if (text) {
+                                        content += text + '\n';
+                                    }
+                                });
+
+                                return content.trim();
                             });
-
-                            return content.trim();
-                        });
+                        } catch (extractError) {
+                            logger.debug(`   内容提取失败: ${extractError.message}`);
+                            howToBuy = '';
+                        }
 
                         item.howToBuy = howToBuy || '暂无购买指南';
                         logger.info(`   📄 已获取 "${item.title.substring(0, 15)}..." 的购买指南`);
 
                     } catch (error) {
-                        logger.warn(`   ⚠️ 无法获取 "${item.title.substring(0, 15)}..." 的详情: ${error.message}`);
+                        // 最外层兜底捕获
+                        logger.warn(`   ⚠️  无法获取 "${item.title.substring(0, 15)}..." 的详情: ${error.message}`);
                         item.howToBuy = '获取失败';
                     }
                 }
