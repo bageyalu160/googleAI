@@ -1,0 +1,215 @@
+{
+  "timestamp": "2025-12-15T03:23:11.146Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 2,
+          "items": [
+            {
+              "title": "爱他美 白金版 儿童奶粉 德版 1+段 800g 177.93元（需买3件，需用券）",
+              "price": 177.93,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164359669/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "爱他美 澳洲白金版含DHA段叶黄素婴幼儿配方奶粉新西兰优质奶源900g 白金3段4罐 181.25元（需买4件，需用券）",
+              "price": 181.25,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164351295/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 179.59,
+          "minPrice": 177.93,
+          "maxPrice": 181.25
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "帮宝适纸尿裤",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用：帮宝适 黑金帮拉拉裤S46片 73.78元（需买2件，需用券）",
+              "price": 73.78,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164420214/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 73.78,
+          "minPrice": 73.78,
+          "maxPrice": 73.78
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 4,
+          "items": [
+            {
+              "title": "88VIP、今日必买：维达 棉韧立体美系列 抽纸100抽*30包 25.15元（需买3件，需用券）",
+              "price": 25.15,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164270108/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "88VIP、今日必买：维达 棉韧抽纸100抽30包S码 23.46元",
+              "price": 23.46,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164467744/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "PLUS会员：维达 抽纸 棉韧3层90抽*18包M码纸巾 熊出没款随机发货 19.1元",
+              "price": 19.1,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164578716/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "88VIP、今日必买：维达 蓝色经典系列 有芯卷纸 200g*27卷 36.45元",
+              "price": 36.45,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164550228/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 26.040000000000003,
+          "minPrice": 19.1,
+          "maxPrice": 36.45
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 4,
+          "items": [
+            {
+              "title": "88VIP：心相印 茶语丝享系列 抽纸 100抽20包 17.4元（需用券）",
+              "price": 17.4,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164384097/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "今日必买：心相印 抽纸茶语精选 320抽4提 11.9元",
+              "price": 11.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164375461/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "88VIP、今日必买：心相印 品诺抽纸M码4层 90抽*18包 23.33元（需买3件，需用券）",
+              "price": 23.33,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164534140/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "心相印 茶语丝享抽纸卫生纸餐巾纸面巾纸家用实惠装 110 抽*24 23.17元（需买2件，需用券）",
+              "price": 23.17,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164347990/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 18.95,
+          "minPrice": 11.9,
+          "maxPrice": 23.33
+        },
+        {
+          "success": true,
+          "product": "保鲜袋",
+          "count": 1,
+          "items": [
+            {
+              "title": "妙潔 妙洁 背心式厚实保鲜袋 中号480只 食品级加厚手提 11.9元",
+              "price": 11.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/163735790/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 11.9,
+          "minPrice": 11.9,
+          "maxPrice": 11.9
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 2,
+          "items": [
+            {
+              "title": "立白 洁多芬 多效合一洗衣液14斤装 39.9元（需用券）",
+              "price": 39.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164585812/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "立白 小苍兰液8斤+茶籽6斤+亮白4斤+柔顺剂4斤装 55.9元",
+              "price": 55.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/164564960/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 47.9,
+          "minPrice": 39.9,
+          "maxPrice": 55.9
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 3,
+          "items": [
+            {
+              "title": "今日必买：AXE 牌（AXE）金骏青梅果蔬餐具净洗洁精1.01kg 泵6大零添加4倍去农残小苏打 5.9元（需用券）",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164077323/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "超能 白桃苏打洗洁精 1kg*2瓶 快速去油洁净无忧 清新祛味 11.63元（需用券）",
+              "price": 11.63,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164450349/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "AXE 柠檬洗洁精 1.01kg+1kg 16.9元（需用券）",
+              "price": 16.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/164488316/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 11.476666666666667,
+          "minPrice": 5.9,
+          "maxPrice": 16.9
+        }
+      ]
+    }
+  },
+  "successRate": "7/9 (77.8%)"
+}
