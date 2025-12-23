@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-12-23T03:19:50.688Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": false,
+          "product": "爱他美奶粉",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": false,
+          "product": "维达抽纸",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "心相印卷纸",
+          "error": "net::ERR_CONNECTION_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E5%BF%83%E7%9B%B8%E5%8D%B0"
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "立白洗衣液",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "洗洁精",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        }
+      ]
+    }
+  },
+  "successRate": "0/9 (0.0%)"
+}
