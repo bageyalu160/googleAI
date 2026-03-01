@@ -1,0 +1,276 @@
+{
+  "timestamp": "2026-03-01T04:13:16.444Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 4,
+          "items": [
+            {
+              "title": "值选：爱他美 卓傲系列 幼儿奶粉 国行版 3段 300g 79.9元",
+              "price": 79.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169145600/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "移动端：爱他美 澳洲白金版 婴幼儿配方奶粉 3段1罐900g 195元（淘金币可抵3元起）",
+              "price": 195,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169292862/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "爱他美 卓傲系列 幼儿奶粉 国行版 3段 800g 240元",
+              "price": 240,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/167909841/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "爱他美 德国爱他美 白金版2段德爱婴幼儿宝宝进口奶粉官方正品800g 187元（需用券）",
+              "price": 187,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169332584/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 175.475,
+          "minPrice": 79.9,
+          "maxPrice": 240
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "帮宝适纸尿裤",
+          "count": 1,
+          "items": [
+            {
+              "title": "移动端、京东百亿补贴：帮宝适 新生儿顶配黑金帮纸尿裤婴儿尿不湿尿片添加真蚕丝NB39 71.99元（需用券）",
+              "price": 71.99,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/168929009/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 71.99,
+          "minPrice": 71.99,
+          "maxPrice": 71.99
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 4,
+          "items": [
+            {
+              "title": "限地区、88VIP：维达 棉韧立体美抽纸M码 90抽*40包 39.69元（需用券）",
+              "price": 39.69,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169298236/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "维达 棉韧系列 抽纸 3层100抽72包(120*195mm) 71.7元（需用券）",
+              "price": 71.7,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169411278/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "今日必买：维达 抽纸 维达x《哪吒2》 超韧抽纸M码100抽24包 纸巾 整箱 19.96元",
+              "price": 19.96,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169389294/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "今日必买：维达 棉韧立体美系列抽纸 24包 23.65元",
+              "price": 23.65,
+              "mall": "拼多多",
+              "link": "https://www.smzdm.com/p/169279824/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 38.75,
+          "minPrice": 19.96,
+          "maxPrice": 71.7
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 4,
+          "items": [
+            {
+              "title": "今日必买：心相印 茶语丝享系列 抽纸 3层120抽27包(131*190mm) 28.7元（需用券）",
+              "price": 28.7,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169402230/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "心相印 茶语经典抽纸110抽*30包 34.66元",
+              "price": 34.66,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169315894/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "今日必买：心相印 Mind Act Upon Mind 心相印 茶语丝享系列 抽纸 3层120抽27包(131*190mm) 28.7元",
+              "price": 28.7,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169390900/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "今日必买：心相印 1包1.05！心相印 茶语经典系列 抽纸110抽*30包 31.66元",
+              "price": 31.66,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/168187173/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 30.93,
+          "minPrice": 28.7,
+          "maxPrice": 34.66
+        },
+        {
+          "success": true,
+          "product": "保鲜袋",
+          "count": 3,
+          "items": [
+            {
+              "title": "洁成 活动只有今天！保鲜袋 组合装220只 5.9元（需用券）",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169267820/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "88VIP：茶花 250只装食品级PE保鲜袋加厚一撕即断冷热双用冷藏冷冻底部双压封口 6.45元（需用券）",
+              "price": 6.45,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169206729/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "今日必买：洁成 食品保鲜袋 大号 30*35cm*800只 19.9元",
+              "price": 19.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169308855/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 10.75,
+          "minPrice": 5.9,
+          "maxPrice": 19.9
+        },
+        {
+          "success": true,
+          "product": "保鲜膜",
+          "count": 3,
+          "items": [
+            {
+              "title": "洁成 点断式保鲜膜 30cm*30米3卷 共可撕300张 6.9元（需用券）",
+              "price": 6.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169383131/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "妙潔 妙洁（MIAOJIE） 妙洁免刀撕保鲜膜套大卷点断式PE食品级 5.9元",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/168813708/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "妙潔 手撕式保鲜膜90米*1卷 7.9元",
+              "price": 7.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169331050/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 6.900000000000001,
+          "minPrice": 5.9,
+          "maxPrice": 7.9
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 3,
+          "items": [
+            {
+              "title": "淘金币可用、88VIP：立白 柔顺香氛洗衣液小苍兰12斤（6KG） 29.2元（需用券）",
+              "price": 29.2,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169312682/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "淘金币可用、88VIP：立白 天然茶籽除菌洗衣液 山茶幽香 12斤 32.95元（需用券）",
+              "price": 32.95,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/168452399/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "今日必买：立白 大师香氛洗衣液 组合套装 29.3元（需买2件，需用券）",
+              "price": 29.3,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/168175076/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 30.483333333333334,
+          "minPrice": 29.2,
+          "maxPrice": 32.95
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 3,
+          "items": [
+            {
+              "title": "立白 APG薄荷洗洁精 1kg 6.45元",
+              "price": 6.45,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169361869/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "立白 柠檬洗洁精 1kg*2瓶 11.9元",
+              "price": 11.9,
+              "mall": "拼多多",
+              "link": "https://www.smzdm.com/p/169199502/",
+              "howToBuy": "页面加载失败"
+            },
+            {
+              "title": "有券的上：立白 青柠洗洁精APG薄荷洗洁精1kg 5.9元",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169271393/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 8.083333333333334,
+          "minPrice": 5.9,
+          "maxPrice": 11.9
+        }
+      ]
+    }
+  },
+  "successRate": "8/9 (88.9%)"
+}
