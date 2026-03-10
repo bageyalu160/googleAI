@@ -1,0 +1,133 @@
+{
+  "timestamp": "2026-03-10T03:59:39.831Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "值选：爱他美 卓傲系列 幼儿奶粉 国行版 3段 800g 234元（需买2件，需用券）",
+              "price": 234,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169848736/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 234,
+          "minPrice": 234,
+          "maxPrice": 234
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "count": 0
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用：维达 棉韧压花抽纸3层100抽30包S码 30.26元（方案2可27.02/箱）",
+              "price": 30.26,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169921955/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 30.26,
+          "minPrice": 30.26,
+          "maxPrice": 30.26
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "心相印 茶语经典系列 抽纸24包 23.91元（需用券）",
+              "price": 23.91,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169842305/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 23.91,
+          "minPrice": 23.91,
+          "maxPrice": 23.91
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "保鲜膜",
+          "count": 1,
+          "items": [
+            {
+              "title": "洁成 点断式保鲜膜家用厨房一次性食品级薄膜 点断式30cm*30米3卷共可撕300张 6.9元（需用券）",
+              "price": 6.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169788380/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 6.9,
+          "minPrice": 6.9,
+          "maxPrice": 6.9
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用、今日必买：立白 茶籽除菌液洗衣液 5kg 32.05元（淘金币26.56）",
+              "price": 32.05,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169656792/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 32.05,
+          "minPrice": 32.05,
+          "maxPrice": 32.05
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "雕牌 食品用洗洁精1kg*2瓶 红柚+薄荷去重油 果蔬餐具洗涤剂 6.05元",
+              "price": 6.05,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169640860/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 6.05,
+          "minPrice": 6.05,
+          "maxPrice": 6.05
+        }
+      ]
+    }
+  },
+  "successRate": "6/9 (66.7%)"
+}
