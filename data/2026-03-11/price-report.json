@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-03-11T04:00:44.305Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": false,
+          "product": "爱他美奶粉",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "count": 0
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用：维达 棉韧压花抽纸3层100抽30包S码 30.26元（方案2可27.02/箱）",
+              "price": 30.26,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169921955/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 30.26,
+          "minPrice": 30.26,
+          "maxPrice": 30.26
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：心相印 茶语经典抽纸3层110抽30包餐巾纸整箱 29.66元",
+              "price": 29.66,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169661301/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 29.66,
+          "minPrice": 29.66,
+          "maxPrice": 29.66
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "保鲜膜",
+          "count": 1,
+          "items": [
+            {
+              "title": "妙潔 妙洁（MIAOJIE） 妙洁免刀撕保鲜膜套大卷点断式PE食品级 5.9元",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/168813708/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 5.9,
+          "minPrice": 5.9,
+          "maxPrice": 5.9
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用、今日必买：立白 茶籽除菌液洗衣液 5kg 32.05元（淘金币26.56）",
+              "price": 32.05,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169656792/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 32.05,
+          "minPrice": 32.05,
+          "maxPrice": 32.05
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "立白 不上手无残留 洗洁精 5.5元",
+              "price": 5.5,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170002994/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 5.5,
+          "minPrice": 5.5,
+          "maxPrice": 5.5
+        }
+      ]
+    }
+  },
+  "successRate": "5/9 (55.6%)"
+}
