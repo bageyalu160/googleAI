@@ -1,0 +1,133 @@
+{
+  "timestamp": "2026-03-12T04:04:41.739Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "爱他美 白金版 澳版 3段 900g（含税） 188元（需用券）",
+              "price": 188,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169459839/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 188,
+          "minPrice": 188,
+          "maxPrice": 188
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "count": 0
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "88VIP、今日必买：维达 棉韧压花抽纸3层90抽40包M码 40.44元（需用券）",
+              "price": 40.44,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170065771/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 40.44,
+          "minPrice": 40.44,
+          "maxPrice": 40.44
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：心相印 茶语大号无芯卷纸 4层*200g*20卷 34.47元（需买2件，需用券）",
+              "price": 34.47,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170085043/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 34.47,
+          "minPrice": 34.47,
+          "maxPrice": 34.47
+        },
+        {
+          "success": true,
+          "product": "保鲜袋",
+          "count": 1,
+          "items": [
+            {
+              "title": "妙潔 妙洁 背心式厚实保鲜袋 中号480只 11.9元",
+              "price": 11.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/169436386/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 11.9,
+          "minPrice": 11.9,
+          "maxPrice": 11.9
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：立白 小苍兰洗衣凝珠34颗*5盒 32.31元",
+              "price": 32.31,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170062673/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 32.31,
+          "minPrice": 32.31,
+          "maxPrice": 32.31
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "雕牌 全效加浓洗洁精 1.5kg*2瓶 12.16元",
+              "price": 12.16,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/169762282/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 12.16,
+          "minPrice": 12.16,
+          "maxPrice": 12.16
+        }
+      ]
+    }
+  },
+  "successRate": "6/9 (66.7%)"
+}
