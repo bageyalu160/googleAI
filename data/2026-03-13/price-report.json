@@ -1,0 +1,133 @@
+{
+  "timestamp": "2026-03-13T04:03:11.048Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "爱他美 德国白金版2段800g*3罐装 549.29元",
+              "price": 549.29,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170050558/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 549.29,
+          "minPrice": 549.29,
+          "maxPrice": 549.29
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "error": "net::ERR_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E5%B8%AE%E5%AE%9D%E9%80%82"
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "维达 抽纸棉韧3层100抽*36包S码 亲肤无刺激纸巾 AB混发 35.83元（需买2件，需用券）",
+              "price": 35.83,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170138161/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 35.83,
+          "minPrice": 35.83,
+          "maxPrice": 35.83
+        },
+        {
+          "success": false,
+          "product": "心相印卷纸",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "保鲜袋",
+          "count": 1,
+          "items": [
+            {
+              "title": "洁成 食品级大号加厚保鲜袋 400只 6.8元（需用券）",
+              "price": 6.8,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170076947/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 6.8,
+          "minPrice": 6.8,
+          "maxPrice": 6.8
+        },
+        {
+          "success": true,
+          "product": "保鲜膜",
+          "count": 1,
+          "items": [
+            {
+              "title": "妙潔 妙洁（MIAOJIE） 妙洁免刀撕保鲜膜套大卷点断式PE食品级 5.9元",
+              "price": 5.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/168813708/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 5.9,
+          "minPrice": 5.9,
+          "maxPrice": 5.9
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：立白 大师香氛洗衣液 8斤 两件到手16斤 29.3元（需买2件，需用券）",
+              "price": 29.3,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170134202/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 29.3,
+          "minPrice": 29.3,
+          "maxPrice": 29.3
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "PLUS会员：超能 洗洁精离子去油 1kg*3瓶 19.04元",
+              "price": 19.04,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170129485/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 19.04,
+          "minPrice": 19.04,
+          "maxPrice": 19.04
+        }
+      ]
+    }
+  },
+  "successRate": "6/9 (66.7%)"
+}
