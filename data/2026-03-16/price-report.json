@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-03-16T04:31:18.002Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "爱他美 发顺丰】爱他美卓傲3段婴幼儿配方牛奶粉三段800g/罐装婴儿奶粉 199元",
+              "price": 199,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170322894/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 199,
+          "minPrice": 199,
+          "maxPrice": 199
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "count": 0
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "88VIP：维达 棉韧压花抽纸3层90抽40包M码 38.5元（需用券）",
+              "price": 38.5,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170216230/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 38.5,
+          "minPrice": 38.5,
+          "maxPrice": 38.5
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "移动端、京东百亿补贴：心相印 抽纸 茶语丝享3层110抽*60包S码 纸巾 餐巾纸 64.25元",
+              "price": 64.25,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170186738/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 64.25,
+          "minPrice": 64.25,
+          "maxPrice": 64.25
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "立白洗衣液",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "淘金币可用、88VIP：超能 洗洁精西柚去腥1kg*3瓶 19.66元（需用券）",
+              "price": 19.66,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170212432/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 19.66,
+          "minPrice": 19.66,
+          "maxPrice": 19.66
+        }
+      ]
+    }
+  },
+  "successRate": "4/9 (44.4%)"
+}
