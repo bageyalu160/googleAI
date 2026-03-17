@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-03-17T04:08:39.304Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "爱他美 卓傲婴儿配方奶粉0-6月龄,1段300g 98.9元",
+              "price": 98.9,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170308031/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 98.9,
+          "minPrice": 98.9,
+          "maxPrice": 98.9
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "count": 0
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "88VIP、今日必买：维达 棉韧压花抽纸3层90抽40包M码 38.5元（需用券）",
+              "price": 38.5,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/170406690/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 38.5,
+          "minPrice": 38.5,
+          "maxPrice": 38.5
+        },
+        {
+          "success": false,
+          "product": "心相印卷纸",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "保鲜膜",
+          "count": 1,
+          "items": [
+            {
+              "title": "洁成 点断式保鲜膜家用厨房一次性食品级薄膜 点断式30cm*30米3卷 6.9元（需用券）",
+              "price": 6.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170365414/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 6.9,
+          "minPrice": 6.9,
+          "maxPrice": 6.9
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：立白 卫仕天然除菌洗衣液8斤装 去汗味 除菌率99.99% 72小时长效抑菌 17.94元",
+              "price": 17.94,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170374712/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 17.94,
+          "minPrice": 17.94,
+          "maxPrice": 17.94
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "PLUS会员：超能 洗洁精离子去油 1kg*3瓶 19.04元",
+              "price": 19.04,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170129485/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 19.04,
+          "minPrice": 19.04,
+          "maxPrice": 19.04
+        }
+      ]
+    }
+  },
+  "successRate": "5/9 (55.6%)"
+}
