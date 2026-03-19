@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-03-19T04:13:02.592Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": true,
+          "product": "爱他美奶粉",
+          "count": 1,
+          "items": [
+            {
+              "title": "爱他美 卓傲系列 幼儿奶粉 国行版 3段 800g 235元（需买2件，需用券）",
+              "price": 235,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170461030/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 235,
+          "minPrice": 235,
+          "maxPrice": 235
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "帮宝适纸尿裤",
+          "count": 1,
+          "items": [
+            {
+              "title": "PLUS会员、移动端、京东百亿补贴：帮宝适 散热王者一级帮拉拉裤新生儿婴儿尿不湿尿片超薄透气XL28 62.06元（需买3件，需用券）",
+              "price": 62.06,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170479851/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 62.06,
+          "minPrice": 62.06,
+          "maxPrice": 62.06
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": false,
+          "product": "维达抽纸",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "心相印卷纸",
+          "count": 1,
+          "items": [
+            {
+              "title": "心相印 抽纸巾茶语丝享系列面巾纸3层家庭实惠装卫生纸餐巾 S码 3层 110抽*24包 29.84元",
+              "price": 29.84,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170378856/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 29.84,
+          "minPrice": 29.84,
+          "maxPrice": 29.84
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "count": 0
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "count": 0
+        },
+        {
+          "success": true,
+          "product": "立白洗衣液",
+          "count": 1,
+          "items": [
+            {
+              "title": "今日必买：立白 大师香氛洗衣液 14斤 39.9元（需用券）",
+              "price": 39.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170456287/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 39.9,
+          "minPrice": 39.9,
+          "maxPrice": 39.9
+        },
+        {
+          "success": true,
+          "product": "洗洁精",
+          "count": 1,
+          "items": [
+            {
+              "title": "立白 天然莓果酵素 洗洁精 5.8元",
+              "price": 5.8,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/170561250/",
+              "howToBuy": "页面加载失败"
+            }
+          ],
+          "avgPrice": 5.8,
+          "minPrice": 5.8,
+          "maxPrice": 5.8
+        }
+      ]
+    }
+  },
+  "successRate": "5/9 (55.6%)"
+}
