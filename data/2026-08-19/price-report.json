@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-08-19T02:50:50.637Z",
+  "site": "smzdm",
+  "category": "all",
+  "categories": {
+    "baby": {
+      "products": [
+        {
+          "success": false,
+          "product": "爱他美奶粉",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "花王尿不湿",
+          "error": "net::ERR_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E8%8A%B1%E7%8E%8B"
+        },
+        {
+          "success": false,
+          "product": "帮宝适纸尿裤",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        }
+      ]
+    },
+    "household": {
+      "products": [
+        {
+          "success": true,
+          "product": "维达抽纸",
+          "count": 4,
+          "items": [
+            {
+              "title": "今日必买：维达 线条小狗 棉韧抽纸压花卫生纸 3层 90抽*60包 133*195mm 53.9元（需用券）",
+              "price": 53.9,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/180635722/",
+              "howToBuy": "爆料原文：\n\n价格截至到21号，手慢无！！\n京东售价159.9元，领优惠券159-56元、补贴券159-50元，下单1件实付53.9元60包，折一包0.89元。"
+            },
+            {
+              "title": "淘金币可用、今日必买：维达 超韧抽纸100抽3层30包S码 25.38元（需用券）",
+              "price": 25.38,
+              "mall": "天猫",
+              "link": "https://www.smzdm.com/p/180581960/",
+              "howToBuy": "页面跳转超时"
+            },
+            {
+              "title": "维达 |CHIIKAWA 抽纸 棉韧3层100抽*16包M码 卫生纸纸抽 纸巾 整箱 15.48元（需买5件，需用券）",
+              "price": 15.48,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/180605397/",
+              "howToBuy": "未抓取(限制数量)"
+            },
+            {
+              "title": "维达 抽纸棉韧3层100抽*36包S码 亲肤无刺激纸巾 AB混发 33.41元（需买2件，需用券）",
+              "price": 33.41,
+              "mall": "京东",
+              "link": "https://www.smzdm.com/p/180530783/",
+              "howToBuy": "未抓取(限制数量)"
+            }
+          ],
+          "avgPrice": 32.042500000000004,
+          "minPrice": 15.48,
+          "maxPrice": 53.9
+        },
+        {
+          "success": false,
+          "product": "心相印卷纸",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "保鲜袋",
+          "error": "Navigation timeout of 20000 ms exceeded"
+        },
+        {
+          "success": false,
+          "product": "保鲜膜",
+          "error": "net::ERR_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E4%BF%9D%E9%B2%9C%E8%86%9C"
+        },
+        {
+          "success": false,
+          "product": "立白洗衣液",
+          "error": "net::ERR_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E7%AB%8B%E7%99%BD"
+        },
+        {
+          "success": false,
+          "product": "洗洁精",
+          "error": "net::ERR_TIMED_OUT at https://search.smzdm.com/?c=home&s=%E6%B4%97%E6%B4%81%E7%B2%BE"
+        }
+      ]
+    }
+  },
+  "successRate": "1/9 (11.1%)"
+}
